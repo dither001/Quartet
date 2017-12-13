@@ -35,8 +35,8 @@ int part1[] = {
 
 int part2[] = {
   0, 0, 0, 0, 0, 0, 0, 0, // measure 1
-  0, 0, 0, 0, 0, 0, 
   NOTE_AS4, NOTE_AS5, NOTE_AS4, NOTE_AS5, // dur 1/16
+  0, 0, 0, 0, 0, 0, // measure 2
   0, 0, 0, 0, 0, 0, 0, 0, // measure 3
   0, 0, 0, 0, 0, 0, 0, 0, // measure 4
   0, 0, 0, 0, 
@@ -55,9 +55,7 @@ int part2[] = {
   NOTE_G5, // measure 14
   NOTE_GS5, 
   NOTE_A6, // 4 counts
-  NOTE_C5, 
-  NOTE_AS4, 
-  0, // measure 15 (inserted rest to complete measure)
+  0, NOTE_C5, NOTE_AS4, // measure 15
   NOTE_CS5, // 3 counts
   NOTE_C5, 
   NOTE_AS4, // 3 counts
@@ -66,16 +64,16 @@ int part2[] = {
   0, 0, 0, NOTE_DS5, // measure 17
   NOTE_CS5, // 3 counts
   NOTE_C5, NOTE_AS4, NOTE_C5, NOTE_CS5, // dur 1/16
-  0, NOTE_DS5, 0, // added rest to complete measure 18
+  NOTE_CS5, NOTE_DS5, 0, // measure 18
   NOTE_F5, 
   NOTE_DS5, // 3 counts
-  NOTE_CS5, 
-  NOTE_CS5, NOTE_C5, NOTE_CS5, NOTE_C5, // dur 1/16
+  NOTE_CS5, // 2 counts
+  NOTE_CS5, NOTE_C5, NOTE_CS5, NOTE_C5, // dur 1/16 measure 19
   NOTE_CS5, // 3 counts
-  NOTE_C5, NOTE_AS4, 
-  NOTE_AS4, NOTE_A4, NOTE_GS4, 0, // measure 20
+  NOTE_C5, NOTE_AS4, // 2 counts
+  NOTE_AS4, NOTE_A4, NOTE_GS4, // measure 20
   // {NOTE_AS4, NOTE_A4, NOTE_GS4} SPECIAL duration of 1/8 divided by 3
-  // I modified the last 3 notes to add a rest and "complete" measure 20
+  // I modified the last 3 notes 
   // by instead using each at 1/8 in part because 1/16 notes sound awful
   // and there's like, no point to making one even shorter; also timing?
   NOTE_G4, // 3 counts
@@ -87,13 +85,13 @@ int part2[] = {
   NOTE_C5, // 3 counts
   NOTE_CS5, 
   // measure 22
-  NOTE_F5, NOTE_DS5, 
+  NOTE_F5, NOTE_DS5, // 2 counts
   NOTE_DS5, // 3 counts
-  NOTE_DS5, NOTE_F5, // dur 1/16
-  0, 0, // added 2 rests to complete measure 23
-  NOTE_FS5, NOTE_F5, NOTE_DS5, 
-  NOTE_CS5, NOTE_DS5, // dur 1/16
-  0, 0, 0, 0, // added 4 rests to complete measure 24
+  NOTE_DS5, NOTE_F5, // dur 1/16 measure 23
+  NOTE_FS5, // 2 counts
+  NOTE_F5,
+  NOTE_DS5, // 2 counts
+  NOTE_CS5, NOTE_DS5, // dur 1/16 measure 24
   NOTE_C5, // 4 counts
   0, 0, 0, 
   NOTE_DS5, NOTE_F5, // dur 1/16 measure 25
@@ -116,7 +114,7 @@ int part2[] = {
 
 int part2dur[] = {
   42, 42, 42, 42, 42, 42, 42, 42, // measure 1
-  42, 42, 42, 42, 42, 42, 21, 21, 21, 21, // measure 2
+  21, 21, 21, 21, 42, 42, 42, 42, 42, 42, // measure 2
   42, 42, 42, 42, 42, 42, 42, 42, // measure 3
   42, 42, 42, 42, 42, 42, 42, 42, // measure 4
   42, 42, 42, 42, 21, 21, 21, 21, 42, 42, // measure 5
@@ -132,11 +130,12 @@ int part2dur[] = {
   125, 42, 125, 42, // measure 16
   167, 42, 42, 42, 42, // measure 17
   125, 21, 21, 21, 21, 42, 42, 42, // measure 18
-  42, 125, 42, 21, 21, 21, 21, 125, 42, 42, 42, 42, 42, 42, // measures 19 & 20
+  42, 125, 83, 21, 21, 21, 21, 
+  125, 83, 83, 14, 14, 14, // measures 20
   125, 167, 42, // measure 21
   125, 42, 125, 42, // measure 22
-  42, 42, 125, 21, 21, 42, 42, // measure 23
-  42, 42, 42, 21, 21, 42, 42, 42, 42, // measure 24
+  83, 83, 125, 21, 21, // measure 23
+  83, 42, 83, 21, 21, // measure 24
   167, 42, 42, 42, 21, 21, // measure 25
   125, 42, 125, 42, // measure 26
   83, 167, 42, 21, 21, // measure 27
@@ -367,5 +366,5 @@ void loop() {
     delay(250);
   }
   
-  if (toggle) partTwo();
+  if (toggle) partThree();
 }
